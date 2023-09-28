@@ -33,8 +33,6 @@ public class ex_04{
 					+ '\n' +vientecinco +" monedas de 25 = " +(vientecinco *25)
 					+ '\n' +cinco +" monedas de 5 = " +(cinco *5)
 					+ '\n' +resto4 +" monedas de 1 = " +(resto4));
-			
-			System.out.println(resto1);
 		}
 }
 	
