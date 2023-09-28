@@ -8,7 +8,7 @@ public class Condicionales {
 
 	public static void main(String[] args) {
 	//ex1_2();
-	//ex3_4_5();
+	ex3_4_5();
 	//ex6();
 	}
 	
@@ -49,21 +49,21 @@ public class Condicionales {
 	System.out.println("Dame otro número(5): ");
 	int num7 = sc.nextInt();
 	
-	//if (num3 > num4 && num3 > num5 && num3 > num6 && num3 > num7){
-	//	System.out.println("el número mayor es: " +num3);
-//	}
-//		else if (num4 > num5 && num4 > num6 && num4 > num7) {
-//			System.out.println("el número mayor es: " +num4);
-//		}
-//			else if (num5 > num6 && num5 > num7) {
-//				System.out.println("el número mayor es: " +num5);
-//			}
-//			else if (num6 > num7) {
-//				System.out.println("el número mayor es: " +num6);
-//			}
-//			else {
-//				System.out.println("el número mayor es: " +num7);
-//	}
+	if (num3 > num4 && num3 > num5 && num3 > num6 && num3 > num7){
+		System.out.println("el número mayor es: " +num3);
+	}
+		else if (num4 > num5 && num4 > num6 && num4 > num7) {
+			System.out.println("el número mayor es: " +num4);
+		}
+			else if (num5 > num6 && num5 > num7) {
+				System.out.println("el número mayor es: " +num5);
+			}
+			else if (num6 > num7) {
+				System.out.println("el número mayor es: " +num6);
+			}
+			else {
+				System.out.println("el número mayor es: " +num7);
+	}
 
 	if (num3 < num4 && num3 < num5 && num3 < num6 && num3 < num7){
 		System.out.println("el número menor es: " +num3);

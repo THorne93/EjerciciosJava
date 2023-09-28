@@ -14,6 +14,12 @@ public class Ex1_5 {
 		int num2 = sc.nextInt();
 		
 		System.out.println("Los valores de antes son: " +num1 + " y " +num2);
-		System.out.println("Los valores cambiados son: " +num2 + " y " +num1);
+		
+		int aux = num1;
+		num1 = num2;
+		num2 = aux;
+		
+		
+		System.out.println("Los valores cambiados son: " +num1+ " y " +num2);
 	}
 }
