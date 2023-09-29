@@ -8,8 +8,9 @@ public class Condicionales {
 
 	public static void main(String[] args) {
 	//ex1_2();
-	ex3_4_5();
+	//ex3_4_5();
 	//ex6();
+	ex7();	
 	}
 	
 	public static void ex1_2() {
@@ -95,6 +96,20 @@ public class Condicionales {
 		}
 		else {
 		System.out.println("el número es impar");
+		}
+	
+	}
+	public static void ex7() {
+		Scanner sc = new Scanner(System.in);
+	
+		System.out.println("Dame un número: ");
+		int num9 = sc.nextInt();
+		var num10 = 1;		
+		if ((num9 & 1) == num10) {
+		System.out.println("el número es impar");
+		}
+		else {
+		System.out.println("el número es par");
 		}
 	
 	}
