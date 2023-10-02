@@ -14,19 +14,9 @@ public class bucleFor{
 			int tot  = Integer.parseInt(str);
 			
 				for (int i = 0; i < tot; i++) {
-					if (i == 0) {str = JOptionPane.showInputDialog("Introduzca un número");
+					{str = JOptionPane.showInputDialog("Introduzca un número");
 					int num = Integer.parseInt(str);
-						if (num >= 0) {
-							if (num >= 10) {
-								sum = sum + num;
-								pos++;
-							}
-							else pos++;
-						}
-						else neg++;	
-						}
-					else {str = JOptionPane.showInputDialog("Introduzca un número");
-					int num = Integer.parseInt(str);
+
 						if (num >= 0) {
 							if (num >= 10) {
 								sum = sum + num;
