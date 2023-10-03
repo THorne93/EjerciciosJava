@@ -104,8 +104,7 @@ public class Condicionales {
 	
 		System.out.println("Dame un número: ");
 		int num9 = sc.nextInt();
-		var num10 = 1;		
-		if ((num9 & 1) == num10) {
+		if ((num9 & 1) == 1) {
 		System.out.println("el número es impar");
 		}
 		else {

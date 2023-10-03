@@ -20,13 +20,12 @@ public class bucleFor{
 						if (num >= 0) {
 							if (num >= 10) {
 								sum = sum + num;
-								pos++;
 							}
-							else pos++;
+							pos++;
 						}
 						else neg++;	
 						}
 					}
 				JOptionPane.showInternalMessageDialog(null, "Hay " + pos + " positivos y " + neg +" negativos. El total es: " +sum);
-				}
 		}
+}
