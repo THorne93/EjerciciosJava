@@ -114,7 +114,7 @@ public class Primeros_arrays {
 		}
 			
 		public static void ex06() {
-			int numeros[] = new int[10];
+			int numeros[] = new int[150];
 			int total = 0;
 			for (int i = 0; i < numeros.length; i++) {
 				numeros[i] = (int) Math.floor(Math.random() * 101);
