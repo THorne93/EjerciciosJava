@@ -5,10 +5,10 @@ public class bucleWhileDoWhile{
 
 	public static void main(String[] args) {
 	//	ex01();
-	//	ex02();
-	//	ex03();
-	//	ex04();
-		ex05();
+//		ex02();
+//		ex03();
+		ex04();
+	//	ex05();
 	}
 		
 	public static void ex01 () {

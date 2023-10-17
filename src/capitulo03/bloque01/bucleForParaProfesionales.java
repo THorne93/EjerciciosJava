@@ -6,9 +6,9 @@ public class bucleForParaProfesionales{
 	
 
 	public static void main(String[] args) {
-	//	ex01();
+		ex01();
 	//	ex02();
-		ex03();
+//		ex03();
 	//	ex04();
 	}
 		
