@@ -20,6 +20,11 @@ public class Arrays {
 		int n = Integer.parseInt(str);
 		return n;
 	}
+	
+	public static String requestString(String text) {
+		String input = JOptionPane.showInputDialog(text);
+		return input;
+	}
 
 	public static void printArray(int array[]) {
 		for (int i = 0; i < array.length; i++) {

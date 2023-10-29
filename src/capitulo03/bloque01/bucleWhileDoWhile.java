@@ -5,9 +5,9 @@ public class bucleWhileDoWhile{
 
 	public static void main(String[] args) {
 	//	ex01();
-//		ex02();
+		ex02();
 //		ex03();
-		ex04();
+//		ex04();
 	//	ex05();
 	}
 		
@@ -46,32 +46,32 @@ public class bucleWhileDoWhile{
 		int count =1;
 		int num1 =1 ;
 		int num2 =1;
-		int i = 2;	
+		int i = 1;	
 		boolean esPrimo = true;
 		
 		String str;
-		str = JOptionPane.showInputDialog("Introduzca el limite inferior");
-		num1  = Integer.parseInt(str);
+
 		str = JOptionPane.showInputDialog("Introduzca el limite superior");
 		num2  = Integer.parseInt(str);
 		count= num1;
 		
-		while (num1 <= count && count <= num2) {	
+		while (count <= num2) {	
 			
-			while (i < count) {
-				if (count % i == 0) {
+			while (num1 > i) {
+				if (num1 % i == 0) {
 					esPrimo = false;
 				}
 				i++;
-			}
+			
 		
 			if (esPrimo == true) {						
-				System.out.println("El número " +count +" es Primo");				
+				System.out.println("El número " +num1 +" es Primo");
+				count++;
 			}
-
+			}
+			num1++;
 			esPrimo = true;
 			i = 2;	
-			count++;
 				
 		}
 	}

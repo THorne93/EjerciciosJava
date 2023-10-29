@@ -6,8 +6,8 @@ public class algoritmosDeOrdenación {
 	public static void main(String[] args) {
 //		Ex01();
 //		Ex02();
-//		Ex03();
-		Ex04();
+		Ex03();
+//		Ex04();
 	}
 
 	public static void Ex01 () {
@@ -60,7 +60,7 @@ public class algoritmosDeOrdenación {
 	public static void Ex03 () {
 		int array[] = new int[150];
 		int i;
-		int shell = 10;
+		int shell = array.length/5;
 		
 		Utils.Arrays.makeArray(array, 0, 1000);
 		Utils.Arrays.printArray(array);
@@ -81,10 +81,9 @@ public class algoritmosDeOrdenación {
 		System.out.println();
 		Utils.Arrays.printArray(array);
 	}
-
-	/*
-	 * 	
-	 */
+/*
+ * 
+ */	
 	public static void Ex04() {
 
 		int array[] = new int[150];
