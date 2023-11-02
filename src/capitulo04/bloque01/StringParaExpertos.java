@@ -15,13 +15,13 @@ public class StringParaExpertos {
 //		contarOcurrencias(string1);
 
 		// ex04
-//		encontrarPalabraMasLarga(string1);
+		encontrarPalabraMasLarga(string1);
 
 		// ex05
 //		System.out.print(intertirContenidoPalabras(string1));
 
 		// ex06
-		buscarPangrama(string1);
+//		buscarPangrama(string1);
 	}
 
 	private static void buscarPangrama(String string1) {
@@ -101,12 +101,13 @@ public class StringParaExpertos {
 		int posicionPalabraTemp = 0;
 		int posicionPalabraFinal = 0;
 		int posicionPalabraFinalTemp = 0;
+		int limit = string1.length();
 
 		for (int i = 0; i < string1.length(); i++) {
 			if (string1.charAt(i) != 32) {
 				posicionPalabraTemp = i;
 				int j = i;
-				while (string1.charAt(j) != 32 && (i + j) <= string1.length()) {
+				while (j < limit && string1.charAt(j) != 32) {
 					caraLengthTemp++;
 					j++;
 				}
