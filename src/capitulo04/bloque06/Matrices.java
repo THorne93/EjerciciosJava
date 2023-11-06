@@ -5,15 +5,15 @@ import capitulo03.bloque01.bucleFor;
 public class Matrices {
 
 	public static void main(String[] args) {
-		int m[][] = new int[5][5];
+//		int m[][] = new int[5][5];
 
-//		int m[][] = new int[][] { 	{ 1, 5, 6, 0, 6 }, 
-//									{ 0, 2, 3, 2, 1 }, 
-//									{ 0, 0, 3, 2, 1 }, 
-//									{ 0, 0, 0, 4, 1 },
-//									{ 0, 0, 0, 0, 5 } };
+		int m[][] = new int[][] { 	{ 1, 5, 6, 8, 6 }, 
+									{ 0, 2, 3, 2, 1 }, 
+									{ 0, 0, 3, 2, 1 }, 
+									{ 0, 0, 0, 4, 1 },
+									{ 0, 0, 0, 0, 5 } };
 
-		rellenaMatriz(m);
+//		rellenaMatriz(m);
 //
 //		imprimeMatriz(m);
 //
@@ -25,7 +25,7 @@ public class Matrices {
 //
 //		System.out.println("Es triangulo superior? " + esTrianguloSuperior(m));
 //
-//		System.out.println("Es dispersa? " + esDispersa(m));
+		System.out.println("Es dispersa? " + esDispersa(m));
 //
 //		convertirEnArray(m);
 //
@@ -43,7 +43,7 @@ public class Matrices {
 		boolean esDispersa = false;
 		for (int i = 0; i < m.length; i++) {
 			esDispersa = false;
-			for (int j = 0; j < m.length; j++) {
+			for (int j = 0; j < m[i].length; j++) {
 				if (m[i][j] == 0) {
 					esDispersa = true;
 				}
