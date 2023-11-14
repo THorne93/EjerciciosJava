@@ -53,6 +53,8 @@ public class TresEnLinea {
 		int winner = 0;
 		int x = 0, y = 0;
 
+		
+		// prueba si la posicion ha sido elegido antes
 		do {
 			playerNumber = 1;
 			int playerPosition;
@@ -79,7 +81,8 @@ public class TresEnLinea {
 
 			m[x][y] = 1;
 			System.out.println();
-
+			
+			//imprime matriz
 			for (int i = 0; i < m.length; i++) {
 				for (int j = 0; j < m[i].length; j++) {
 					System.out.print(m[i][j] + "\t");
@@ -88,12 +91,14 @@ public class TresEnLinea {
 			}
 			playCount++;
 
+			//prueba si haya una combinacion
 			gameOver = testEnd(m, playerNumber);
 			if (gameOver == true) {
 				winner = 1;
 				break;
 			}
-
+			
+			//termina el metodo si todas las posiciones son elegidas
 			if (playCount == 9) {
 				gameOver = true;
 				System.out.println("No ha ganado nadie");
@@ -101,6 +106,7 @@ public class TresEnLinea {
 				break;
 			}
 
+			//para simular pensamiento
 			System.out.println("La I.A esta pensando...");
 			try {
 				TimeUnit.SECONDS.sleep(3);
@@ -110,6 +116,7 @@ public class TresEnLinea {
 
 			playerNumber = 2;
 
+			//para la ia elige una posicion
 			isMatch = true;
 			do {
 
@@ -126,6 +133,7 @@ public class TresEnLinea {
 			test = y;
 			System.out.println();
 
+			//imprime matriz
 			for (int i = 0; i < m.length; i++) {
 				for (int j = 0; j < m[i].length; j++) {
 					System.out.print(m[i][j] + "\t");
@@ -143,6 +151,7 @@ public class TresEnLinea {
 
 		} while (gameOver != true);
 
+		//imprime quien haya ganado (si hubiese)
 		if (hayGanador == true) {
 
 			System.out.println("Ha ganado jugador " + winner + "!");
@@ -151,6 +160,8 @@ public class TresEnLinea {
 	}
 
 	private static void aiMedio(int[][] m) {
+		//todo igual como la iafacil menos lo que esta comentado
+		
 		int playCount = 0;
 
 		var test = 0;
@@ -219,6 +230,7 @@ public class TresEnLinea {
 			isMatch = true;
 			boolean heGanado = false;
 
+			//busca posible combinaciones del usuario y intenta fastidiarlo
 			impedirGanar(m, playerPosition, heGanado);
 
 			if (heGanado == true) {
@@ -275,6 +287,8 @@ public class TresEnLinea {
 	}
 
 	private static void aiDificil(int[][] m) {
+		//todo igual que la ia media menos lo que esta comentado
+		
 		int playCount = 0;
 
 		var test = 0;
@@ -345,6 +359,7 @@ public class TresEnLinea {
 			boolean heGanado = false;
 			moves = 0;
 
+			//busca combinaciones posibles para ganar, en filas, columnas y diagonal
 			heGanado = intentaFila(m, heGanado);
 
 			heGanado = intentaColumna(m, heGanado);
@@ -379,9 +394,11 @@ public class TresEnLinea {
 				heGanado = true;
 				break;
 			}
-
+			
+			//si no hay una combinacion para ganar, intenta impedir que ganese el usuario
 			heGanado = impedirGanar(m, moves, heGanado);
 
+			//si no, elige aliatoriamente otra posicion
 			if (heGanado == false)
 				do {
 

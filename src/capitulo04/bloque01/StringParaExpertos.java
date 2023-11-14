@@ -9,13 +9,13 @@ public class StringParaExpertos {
 //		System.out.print(eliminarEspaciosEnBlanco(string1));
 
 		// ex02
-//		cifradoCesar(string1);
+		cifradoCesar(string1);
 
 		// ex03
 //		contarOcurrencias(string1);
 
 		// ex04
-		encontrarPalabraMasLarga(string1);
+//		encontrarPalabraMasLarga(string1);
 
 		// ex05
 //		System.out.print(intertirContenidoPalabras(string1));
