@@ -13,9 +13,9 @@ public class Matrices {
 									{ 0, 0, 0, 4, 3 },
 									{ 0, 0, 0, 0, 5 } };
 
-//		rellenaMatriz(m);
+		rellenaMatriz(m);
 //
-//		imprimeMatriz(m);
+		imprimeMatriz(m);
 //
 //		System.out.println();
 //
@@ -31,7 +31,7 @@ public class Matrices {
 //
 //		esSimetrica(m);
 //
-//		crearMatrizTraspuesta(m);
+		crearMatrizTraspuesta(m);
 //
 //		crearMatrizOpuesta(m);
 //
@@ -134,7 +134,7 @@ public class Matrices {
 	private static void crearMatrizTraspuesta(int[][] m) {
 		int m2[][] = new int[5][5];
 		for (int j = 0; j < m.length; j++) {
-			for (int i = 0; i < m[j].length; i++) {
+			for (int i	 = 0; i < m[j].length; i++) {
 				m2[j][i] = m[i][j];
 			}
 
@@ -213,12 +213,12 @@ public class Matrices {
 	/*
 	 * 
 	 */
-	private static void rellenaMatriz(int[][] m) {
-		for (int i = 0; i < m.length; i++) {
-			for (int j = 0; j < m[i].length; j++) {
-				m[i][j] = (int) Math.round(Math.random() * 100);
-
+		private static void rellenaMatriz(int[][] m) {
+			for (int i = 0; i < m.length; i++) {
+				for (int j = 0; j < m[i].length; j++) {
+					m[i][j] = (int) Math.round(Math.random() * 100);
+	
+				}
 			}
 		}
-	}
 }

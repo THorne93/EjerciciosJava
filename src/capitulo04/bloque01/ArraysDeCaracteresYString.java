@@ -120,7 +120,6 @@ public class ArraysDeCaracteresYString {
 	 * 
 	 */
 	public static int compararCadenas(String string1, String string2) {
-		int n = 0;
 
 		for (int i = 0; i < string1.length() && i < string2.length(); i++) {
 			if (string1.charAt(i) < string2.charAt(i)) {

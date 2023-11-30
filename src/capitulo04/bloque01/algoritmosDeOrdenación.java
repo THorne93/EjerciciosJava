@@ -5,8 +5,8 @@ public class algoritmosDeOrdenación {
 
 	public static void main(String[] args) {
 //		Ex01();
-//		Ex02();
-		Ex03();
+		Ex02();
+//		Ex03();
 //		Ex04();
 	}
 

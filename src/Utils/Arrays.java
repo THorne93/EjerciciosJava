@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 public class Arrays {
 
-	public static int getRandomNumber() {
-		return (int) Math.round(Math.random() * 100);
+	public static int getRandomNumber(int limiteinf, int limitesup) {
+		return  limiteinf + (int) Math.round(Math.random() * (limitesup - limiteinf));
 	}
 
 	public static void makeArray(int array[], int limiteinf, int limitesup) {
@@ -92,8 +92,8 @@ public class Arrays {
 
 	public static void desplazaCiclicoDerechaNew(int array[], int posiciones) {
 
-		int temp = array[array.length - 1];
-		for (int i = array.length - 1; i > 0; i--) {
+		int temp = array[array.length-1];
+		for (int i = array.length-1; i > 0; i--) {
 			array[i] = array[i - 1];
 		}
 		array[0] = temp;
