@@ -59,18 +59,34 @@ public class Baraja {
 	 }
 	 
 	 public void ordenaCartas() {
-			boolean hayCambios = true;
+		boolean hayCambios = true;
 			
-			do {
-				 hayCambios = false;
-					for (int i = 0; i < cartas.length-1; i++) {
-						if (cartas[i].getId() > cartas[i+1].getId()) {
-							hayCambios = true;
-							Carta temp = cartas[i+1];
-							cartas[i+1] = cartas[i];
-							cartas[i] = temp;
-						}
+		do {
+			 hayCambios = false;
+				for (int i = 0; i < cartas.length-1; i++) {
+					if (cartas[i].getId() > cartas[i+1].getId()) {
+						hayCambios = true;
+						Carta temp = cartas[i+1];
+						cartas[i+1] = cartas[i];
+						cartas[i] = temp;
 					}
-			} while (hayCambios == true);
+				}
+		} while (hayCambios == true);
 	 }
+	 
+		public void muestraEstadoActual () {
+			for (int i = 0; i < cartas.length; i++) {
+				System.out.print(cartas[i] + " - ");
+			}
+			System.out.println();
+		}
+		
+		public Carta[] getCartas() {
+			return cartas;
+		}
+		
+		public void setCartas(Carta[] newCartas) {
+			cartas = newCartas;
+		}	
+		
 }

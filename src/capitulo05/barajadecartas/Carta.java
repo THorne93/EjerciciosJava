@@ -35,7 +35,32 @@ public class Carta {
 	}
 	
 	public String toString() {
-		return cartaNumero + " de " +cartaPalo;
+		StringBuffer sb = new StringBuffer();
+		
+		switch(cartaNumero) {
+		case 1:
+			sb.append("As");
+			break;
+		case 11:
+			sb.append("J");
+			break;
+		case 12:
+			sb.append("Q");
+			break;
+		case 13:
+			sb.append("K");
+			break;
+		default:
+			sb.append(cartaNumero);
+		}
+		
+		if (cartaPalo.equalsIgnoreCase("Corazones")) sb.append(" de Corazones");
+		else if (cartaPalo.equalsIgnoreCase("Picas")) sb.append(" de Picas");
+		else if (cartaPalo.equalsIgnoreCase("Diamantes")) sb.append(" de Diamantes");
+		else sb.append(" de Tréboles");
+
+		
+		return sb.toString();
 		
 	}
 }

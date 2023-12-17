@@ -106,6 +106,21 @@ public class Arrays {
 			desplazaCiclicoDerechaNew(array, posiciones);
 
 	}
+	
+	public static void orderArray(int array[]) {
+		boolean hayCambios = true;
+		do {
+			 hayCambios = false;
+				for (int i = 0; i < array.length-1; i++) {
+					if (array[i] > array[i+1]) {
+						hayCambios = true;
+						int temp = array[i+1];
+						array[i+1] = array[i];
+						array[i] = temp;
+					}
+				}
+		} while (hayCambios == true);
+	}
 
 
 
