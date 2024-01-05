@@ -23,6 +23,9 @@ public class Arrays {
 	
 	public static String requestString(String text) {
 		String input = JOptionPane.showInputDialog(text);
+		
+		if (input == null) input = "";
+		
 		return input;
 	}
 
