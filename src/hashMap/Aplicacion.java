@@ -3,8 +3,6 @@ package hashMap;
 import java.util.HashMap;
 import java.util.Iterator;
 
-
-
 public class Aplicacion {
 
 	public static void main(String[] args) {
@@ -14,8 +12,8 @@ public class Aplicacion {
 		
 		do {
 			int selector = Utils.Arrays.requestNumber(
-					"0.- Salir \n1.- Lista de artículos \n 2.- Crear un nuevo artículo"
-							+ "\n3.- Eliminar un artículo \n 4.- Actualizar un artículo");
+					"0 - Salir \n1 - Lista de artículos \n2 - Crear un nuevo artículo"
+							+ "\n3 - Eliminar un artículo \n4 - Actualizar un artículo");
 
 			switch (selector) {
 			case 0:
@@ -42,6 +40,7 @@ public class Aplicacion {
 	}
 
 	private static void updateArticle(HashMap<String, Articulo> hm) {
+		
 		String codigoBorrar = Utils.Arrays.requestString("Introduzca el codigo");
 		Articulo articuloTemp = hm.get(codigoBorrar);
 		hm.remove(codigoBorrar);
@@ -51,10 +50,6 @@ public class Aplicacion {
 		articuloNewTemp.setNumeroEstante(Utils.Arrays.requestString("Numero estante original: " +articuloTemp.getNumeroEstante() +"\nIntroduzca el nuevo numero de estante"));
 		articuloNewTemp.setCantidad(Utils.Arrays.requestNumber("Cantidad original: " +articuloTemp.getCantidad() +"\nIntroduzca la nueva cantidad"));
 		hm.put(codigoBorrar, articuloNewTemp);
-
-		
-
-		
 		
 	}
 
@@ -62,6 +57,7 @@ public class Aplicacion {
 
 		String codigoBorrar = Utils.Arrays.requestString("Introduzca el codigo");
 		hm.remove(codigoBorrar);
+		
 	}
 
 	private static void newArticle(HashMap<String, Articulo> hm) {
@@ -73,7 +69,6 @@ public class Aplicacion {
 		articuloTemp.setCantidad(Utils.Arrays.requestNumber("Introduzca la cantidad"));
 		hm.put(newCodigo, articuloTemp);
 		
-		
 	}
 
 	private static void showList(HashMap<String, Articulo> hm) {
@@ -82,6 +77,7 @@ public class Aplicacion {
 		while (articulos.hasNext()) {
 			System.out.println(articulos.next());
 		}
+		
 	}
 
 }
