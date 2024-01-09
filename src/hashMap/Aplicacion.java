@@ -42,14 +42,9 @@ public class Aplicacion {
 	private static void updateArticle(HashMap<String, Articulo> hm) {
 		
 		String codigoBorrar = Utils.Arrays.requestString("Introduzca el codigo");
-		Articulo articuloTemp = hm.get(codigoBorrar);
-		hm.remove(codigoBorrar);
 
-		Articulo articuloNewTemp = new Articulo();
-		articuloNewTemp.setCodigo(codigoBorrar);
-		articuloNewTemp.setNumeroEstante(Utils.Arrays.requestString("Numero estante original: " +articuloTemp.getNumeroEstante() +"\nIntroduzca el nuevo numero de estante"));
-		articuloNewTemp.setCantidad(Utils.Arrays.requestNumber("Cantidad original: " +articuloTemp.getCantidad() +"\nIntroduzca la nueva cantidad"));
-		hm.put(codigoBorrar, articuloNewTemp);
+		hm.get(codigoBorrar).setNumeroEstante(Utils.Arrays.requestString("Numero estante original: " +hm.get(codigoBorrar).getNumeroEstante() +"\nIntroduzca el nuevo numero de estante"));
+		hm.get(codigoBorrar).setCantidad(Utils.Arrays.requestNumber("Cantidad original: " +hm.get(codigoBorrar).getCantidad() +"\nIntroduzca la nueva cantidad"));
 		
 	}
 
