@@ -1,7 +1,7 @@
 package arkanoid;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -16,6 +16,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
+
+
+
 /**
  * Clase principal, que crea los monstruos
  *
@@ -27,6 +30,9 @@ public class Arkanoid {
 	private List<Actor> actores = new ArrayList<Actor>();
 	private MiCanvas canvas = null;
 	Nave jugador = null;
+	
+	private List<Actor> actoresParaIncorporar = new ArrayList<Actor>();
+	private List<Actor> actoresParaEliminar = new ArrayList<Actor>();
 
 	
 	// Para utilizar un patrón singleton necesitamos la siguiente propiedad estática
@@ -88,9 +94,7 @@ public class Arkanoid {
 		ventana.setIgnoreRepaint(true);
 		// Hago que la ventana sea visible
 		ventana.setVisible(true);
-		
-		canvas.requestFocus();
-		
+				
 		// Control del evento de cierre de ventana
 		ventana.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		ventana.addWindowListener(new WindowAdapter() {
@@ -109,7 +113,9 @@ public class Arkanoid {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Comienzo un bucle, que consistirá en el juego completo.
+
+		ResourcesCache.getInstance().cargarRecursosEnMemoria();
+
 		Arkanoid.getInstance().juego();
 	}
 	
@@ -139,17 +145,25 @@ public class Arkanoid {
 	public void juego () {
 		int millisPorCadaFrame = 1000 / FPS;
 		do {
+			
+			if (ventana.getFocusOwner() != null && !ventana.getFocusOwner().equals(canvas)) {
+				canvas.requestFocus();
+			}
 			// Redibujo la escena tantas veces por segundo como indique la variable FPS
 			// Tomo los millis actuales
 			long millisAntesDeProcesarEscena = new Date().getTime();
 			
 			// Redibujo la escena
-			canvas.repaint();
+			canvas.pintaEscena();
 			
 			// Recorro todos los actores, consiguiendo que cada uno de ellos actúe
 			for (Actor a : actores) {
 				a.actua();
 			}
+			
+			detectaColisiones();
+			
+			actualizaActores();
 			
 			// Calculo los millis que debemos parar el proceso, generando 60 FPS.
 			long millisDespuesDeProcesarEscena = new Date().getTime();
@@ -196,8 +210,9 @@ public class Arkanoid {
 		
 		Pelota p = new Pelota(200,200, Nave.IMAGEN_PLAYER);
 		actores.add(p);
+
 		
-		// Creo los Monstruos del juego
+	
 
 		
 		// Devuelvo la lista con todos los actores del juego
@@ -210,11 +225,67 @@ public class Arkanoid {
 	 * @param maximo
 	 * @return
 	 */
-	private static int numAleatorio (int minimo, int maximo) {
-		return (int) Math.round(Math.random() * (maximo - minimo) + minimo);
+
+	
+	public void incorporaNuevoActor (Actor a) {
+		this.actoresParaIncorporar.add(a);
+	}
+
+	/**
+	 * Método llamado para eliminar actores del juego
+	 * @param a
+	 */
+	public void eliminaActor (Actor a) {
+		this.actoresParaEliminar.add(a);
+	}
+	
+	/**
+	 * Incorpora los actores nuevos al juego y elimina los que corresponden
+	 */
+	private void actualizaActores () {
+		// Incorporo los nuevos actores
+		for (Actor a : this.actoresParaIncorporar) {
+			this.actores.add(a);
+		}
+		this.actoresParaIncorporar.clear(); // Limpio la lista de actores a incorporar, ya están incorporados
+		
+		// Elimino los actores que se deben eliminar
+		for (Actor a : this.actoresParaEliminar) {
+			this.actores.remove(a);
+		}
+		this.actoresParaEliminar.clear(); // Limpio la lista de actores a eliminar, ya los he eliminado
+	}
+	
+
+	
+	private void detectaColisiones() {
+		// Una vez que cada actor ha actuado, intento detectar colisiones entre los actores y notificarlas. Para detectar
+		// estas colisiones, no nos queda más remedio que intentar detectar la colisión de cualquier actor con cualquier otro
+		// sólo con la excepción de no comparar un actor consigo mismo.
+		// La detección de colisiones se va a baser en formar un rectángulo con las medidas que ocupa cada actor en pantalla,
+		// De esa manera, las colisiones se traducirán en intersecciones entre rectángulos.
+		for (Actor actor1 : this.actores) {
+			// Creo un rectángulo para este actor.
+			Rectangle rect1 = new Rectangle(actor1.getX(), actor1.getY(), actor1.getAncho(), actor1.getAlto());
+			// Compruebo un actor con cualquier otro actor
+			for (Actor actor2 : this.actores) {
+				// Evito comparar un actor consigo mismo, ya que eso siempre provocaría una colisión y no tiene sentido
+				if (!actor1.equals(actor2)) {
+					// Formo el rectángulo del actor 2
+					Rectangle rect2 = new Rectangle(actor2.getX(), actor2.getY(), actor2.getAncho(), actor2.getAlto());
+					// Si los dos rectángulos tienen alguna intersección, notifico una colisión en los dos actores
+					if (rect1.intersects(rect2)) {
+						actor1.colisionaCon(actor2); // El actor 1 colisiona con el actor 2
+						actor2.colisionaCon(actor1); // El actor 2 colisiona con el actor 1
+					}
+				}
+			}
+		}
 	}
 	
 	public MiCanvas getCanvas() {
 		return canvas;
 	}
+	
+	
 }

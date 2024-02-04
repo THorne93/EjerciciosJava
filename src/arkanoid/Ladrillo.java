@@ -3,6 +3,9 @@ package arkanoid;
 import java.awt.Color;
 import java.awt.Graphics;
 
+
+
+
 public class Ladrillo extends Actor {
 
 	//Propiedades estáticas de esta clase
@@ -76,7 +79,35 @@ public class Ladrillo extends Actor {
 	
 	}
 
+	@Override
+	public void colisionaCon(Actor a) {
+		super.colisionaCon(a);
+		// Si colisionamos con un player o un disparo, eliminamos al monstruo
+		 if (a instanceof Pelota) {
+			 if (getPuntosVida() == 1) {
+			        Arkanoid.getInstance().eliminaActor(this);
+					Arkanoid.getInstance().incorporaNuevoActor(new Explosion(this.x, this.y));
 
-	// Getters y Setters
+			 }
+			 else setPuntosVida(getPuntosVida()-1);
+			 
+		    }
+	}
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
+
+	public void setAlto(int alto) {
+		this.alto = alto;
+	}
 	
 }

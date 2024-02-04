@@ -1,5 +1,7 @@
 package examenes.examen20231205baloncesto;
 
+import examenes.examen20240130.ej03.Partido;
+
 public class Principal {
 
 	public static void main(String[] args) {

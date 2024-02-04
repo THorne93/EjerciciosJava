@@ -12,7 +12,7 @@ public class Ex04 {
 		
 		String time = Utils.Arrays.requestString("Introduzca una fecha y hora (dd-MM-yyyy hh:mm:ss)");
 		Date sdf = new SimpleDateFormat ("dd-MM-yyyy hh:mm:ss").parse(time);
-
+		System.out.println(sdf);
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(sdf);
 		System.out.println(time);

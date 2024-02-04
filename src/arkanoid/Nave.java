@@ -20,7 +20,6 @@ public class Nave extends Actor {
 	 */
 	public Nave() {
 		super();
-		ancho = 200;
 	}
 
 	/**
@@ -105,5 +104,21 @@ public class Nave extends Actor {
 		case KeyEvent.VK_RIGHT:
 			derecha = false; break;
 		}
+	}
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
+
+	public void setAlto(int alto) {
+		this.alto = alto;
 	}
 }

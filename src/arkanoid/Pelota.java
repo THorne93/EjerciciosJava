@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 
+
 public class Pelota extends Actor {
 
 	//Propiedades estáticas de esta clase
@@ -63,7 +64,33 @@ public class Pelota extends Actor {
 		
 	}
 
+	@Override
+	public void colisionaCon(Actor a) {
+	    super.colisionaCon(a);
+	    
+	    if (a instanceof Nave || a instanceof Ladrillo) {
+	        this.velocidadY = -this.velocidadY; 
+	        actua();
+	    }
+	}
 
-	// Getters y Setters
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
+
+	public void setAlto(int alto) {
+		this.alto = alto;
+	}
+
+
 	
 }
