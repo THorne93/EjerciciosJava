@@ -96,11 +96,8 @@ public class PanelProfesor extends PanelPersona {
 			this.panelPersona.setSApellido(o.getsApellido());
 			this.panelPersona.setDireccion(o.getDireccion());
 			this.panelPersona.setId(String.valueOf(o.getId()));
-			for (int i = 0; i < jcbSexo.getItemCount(); i++) {
-				if (this.jcbSexo.getItemAt(i).getId() == o.getTipoSexo()) {
-					this.jcbSexo.setSelectedIndex(i);
-				}
-			}
+			this.panelPersona.setSexo(o.getTipoSexo()-1);
+
 		}
 	}
 
@@ -141,7 +138,7 @@ public class PanelProfesor extends PanelPersona {
 			o.setEmail(panelPersona.getEmail());
 			o.setDni(String.valueOf(panelPersona.getId()));
 			o.setTelefono(panelPersona.getTelefono());
-			o.setTipoSexo(((Sexo)this.jcbSexo.getSelectedItem()).getId());
+			o.setTipoSexo(panelPersona.getSexo().getId());
 
 			// Decido si debo insertar o modificar
 			if (o.getId() == -1) { // Inserción
