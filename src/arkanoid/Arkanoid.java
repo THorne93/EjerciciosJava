@@ -276,7 +276,6 @@ public class Arkanoid {
 					// Si los dos rectángulos tienen alguna intersección, notifico una colisión en los dos actores
 					if (rect1.intersects(rect2)) {
 						actor1.colisionaCon(actor2); // El actor 1 colisiona con el actor 2
-						actor2.colisionaCon(actor1); // El actor 2 colisiona con el actor 1
 					}
 				}
 			}

@@ -6,26 +6,17 @@ public class bucleFor{
 
 
 		public static void main(String[] args) {
-			String str;
-			int sum = 0;
-			int pos = 0;
-			int neg = 0;
-			str = JOptionPane.showInputDialog("Cuántos números vas a pedir?");
-			int tot  = Integer.parseInt(str);
 			
-				for (int i = 0; i < tot; i++) {
-					{str = JOptionPane.showInputDialog("Introduzca un número");
-					int num = Integer.parseInt(str);
-
-						if (num >= 0) {
-							if (num >= 10) {
-								sum = sum + num;
-							}
-							pos++;
-						}
-						else neg++;	
-						}
-					}
-				JOptionPane.showInternalMessageDialog(null, "Hay " + pos + " positivos y " + neg +" negativos. El total es: " +sum);
+			for (int i = 0; i < 25; i++) {
+				int guest = Utils.Arrays.getRandomNumber(1, 20);
+				int ep = 99;
+				
+				do {
+					ep = Utils.Arrays.getRandomNumber(i, i+2);
+				} while (ep == 5 || ep == 11 || ep == 15 || ep == 16 || ep == 21 || ep == 24 || ep == 28 || ep == 99);
+				
+				System.out.print("("+(i+1)+","+ep+","+guest+"),");
+				
+			}
 		}
 }

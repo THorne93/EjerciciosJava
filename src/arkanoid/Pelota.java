@@ -70,7 +70,6 @@ public class Pelota extends Actor {
 	    
 	    if (a instanceof Nave || a instanceof Ladrillo) {
 	        this.velocidadY = -this.velocidadY; 
-	        actua();
 	    }
 	}
 
