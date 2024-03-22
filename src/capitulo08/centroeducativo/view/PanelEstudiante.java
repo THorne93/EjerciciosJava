@@ -1,17 +1,21 @@
 package capitulo08.centroeducativo.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
+import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import capitulo08.centroeducativo.controllers.ControllerEstudiante;
 import capitulo08.centroeducativo.entities.Estudiante;
-import capitulo08.centroeducativo.entities.Sexo;
 
 public class PanelEstudiante extends PanelPersona {
 
 	private static final long serialVersionUID = 1L;
 	private PanelPersona panelPersona = new PanelPersona();
+	byte[] image;
 
 	/**
 	 * 
@@ -65,6 +69,12 @@ public class PanelEstudiante extends PanelPersona {
 				delete();
 			}
 		});
+		this.panelPersona.setRunnableChooseColour(new Runnable() {
+			@Override
+			public void run() {
+				seleccionaColor();
+			}
+		});
 
 		modifyLabel(panelPersona);
 		cargarPrimero();
@@ -96,9 +106,34 @@ public class PanelEstudiante extends PanelPersona {
 			this.panelPersona.setSApellido(o.getsApellido());
 			this.panelPersona.setDireccion(o.getDireccion());
 			this.panelPersona.setId(String.valueOf(o.getId()));
-			this.panelPersona.setSexo(o.getTipoSexo());
+			this.panelPersona.setSexo(o.getTipoSexo() - 1);
+			this.panelPersona.image = o.getImage();
+			
+			if (this.panelPersona.image != null && this.panelPersona.image.length > 0) {
+				ImageIcon icono = new ImageIcon(this.panelPersona.image);
+				JLabel lblIcono = new JLabel(icono);
+				this.panelPersona.getScrollPane().setViewportView(lblIcono);
+			} else {
+				JLabel lblIcono = new JLabel("Sin imagen");
+				this.panelPersona.getScrollPane().setViewportView(lblIcono);
+			}
+			
+			try {
+				if (o.getColor() != null) {
+					Color color = Color.decode(o.getColor());
+					this.panelPersona.setColor(o.getColor());
+
+					this.panelPersona.panel.setBackground(color);
+
+				}
+				else this.panelPersona.panel.setBackground(null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
+	
+	
 
 	private void cargarPrimero() {
 		Estudiante o = ControllerEstudiante.getPrimero();
@@ -118,6 +153,16 @@ public class PanelEstudiante extends PanelPersona {
 		Estudiante o = ControllerEstudiante.getUltimo();
 		muestraEnPantalla(o);
 	}
+	
+	private void seleccionaColor() {
+		Color color = JColorChooser.showDialog(null, "Seleccione un Color", Color.gray);
+		// Si el usuario pulsa sobre aceptar, el color elegido no será nulo
+		if (color != null) {
+			String strColor = "#" + Integer.toHexString(color.getRGB()).substring(2);
+			this.panelPersona.setColor(strColor);
+			this.panelPersona.setBackground(color);
+		}
+	}
 
 	private void guardar() {
 		try {
@@ -136,7 +181,9 @@ public class PanelEstudiante extends PanelPersona {
 			o.setEmail(panelPersona.getEmail());
 			o.setDni(String.valueOf(panelPersona.getId()));
 			o.setTelefono(panelPersona.getTelefono());
-			o.setTipoSexo(panelPersona.getSexo().getId()-1);
+			o.setTipoSexo(panelPersona.getSexo().getId());
+			o.setImage(panelPersona.getImage());
+			o.setColor(panelPersona.getColor());
 
 			// Decido si debo insertar o modificar
 			if (o.getId() == -1) { // Inserción
@@ -159,6 +206,14 @@ public class PanelEstudiante extends PanelPersona {
 		this.panelPersona.setSApellido("");
 		this.panelPersona.setDireccion("");
 		this.panelPersona.setId("");
+		if (this.panelPersona.image != null && this.panelPersona.image.length > 0) {
+			ImageIcon icono = new ImageIcon(this.panelPersona.image);
+			JLabel lblIcono = new JLabel(icono);
+			this.panelPersona.getScrollPane().setViewportView(lblIcono);
+		} else {
+			JLabel lblIcono = new JLabel("Sin imagen");
+			this.panelPersona.getScrollPane().setViewportView(lblIcono);
+		}
 	}
 
 	private void delete() {

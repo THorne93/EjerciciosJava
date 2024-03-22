@@ -86,10 +86,10 @@ public class ControllerProfesor extends SuperController {
 	public static int insercion (Profesor o) {
 		try {
 			Connection conn = ConnectionManager.getConexion();
-			int nuevoId = nextIdEnTabla("Profesor");
+			int nuevoId = nextIdEnTabla("profesor");
 			PreparedStatement ps = conn.prepareStatement(""
-					+ "insert into profesor (id, nombre, apellido1, apellido2, dni, direccion, email, telefono, id_TipologiaSexo) "
-					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					+ "insert into profesor (id, nombre, apellido1, apellido2, dni, direccion, email, telefono, id_TipologiaSexo, imagen, colorPreferido) "
+					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			ps.setInt(1, nuevoId);
 			ps.setString(2, o.getNombre());
 			ps.setString(3, o.getpApellido());
@@ -99,6 +99,8 @@ public class ControllerProfesor extends SuperController {
 			ps.setString(7, o.getEmail());
 			ps.setString(8, o.getTelefono());
 			ps.setInt(9, o.getTipoSexo());
+			ps.setBytes(10, o.getImage());
+			ps.setString(11, o.getColor());
 			ps.executeUpdate();
 			return nuevoId;
 		} catch (SQLException e) {
@@ -115,7 +117,7 @@ public class ControllerProfesor extends SuperController {
 			Connection conn = ConnectionManager.getConexion();
 			PreparedStatement ps = conn.prepareStatement(""
 					+ "update profesor set nombre = ?, apellido1 = ?, apellido2 = ?, dni = ?, "
-					+ "direccion = ?, email = ?, telefono = ?, id_TipologiaSexo = ? "
+					+ "direccion = ?, email = ?, telefono = ?, id_TipologiaSexo = ?, imagen = ?, colorPreferido = ? "
 					+ "where id = ?");
 			ps.setString(1, o.getNombre());
 			ps.setString(2, o.getpApellido());
@@ -125,7 +127,9 @@ public class ControllerProfesor extends SuperController {
 			ps.setString(6, o.getEmail());
 			ps.setString(7, o.getTelefono());
 			ps.setInt(8, o.getTipoSexo());
-			ps.setInt(9, o.getId());
+			ps.setBytes(9, o.getImage());
+			ps.setString(10, o.getColor());
+			ps.setInt(11, o.getId());
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -150,6 +154,8 @@ public class ControllerProfesor extends SuperController {
 			o.setEmail(rs.getString("email"));
 			o.setTelefono(rs.getString("telefono"));
 			o.setTipoSexo(rs.getInt("id_TipologiaSexo"));
+			o.setImage(rs.getBytes("imagen"));
+			o.setColor(rs.getString("colorPreferido"));
 		}
 		return o;
 	}
@@ -164,8 +170,10 @@ public class ControllerProfesor extends SuperController {
 		o.setDireccion(rs.getString("direccion"));
 		o.setEmail(rs.getString("email"));
 		o.setTelefono(rs.getString("telefono"));
-		System.out.println(rs.getInt("id_TipologiaSexo"));
 		o.setTipoSexo(rs.getInt("id_TipologiaSexo"));
+		o.setImage(rs.getBytes("imagen"));
+		o.setColor(rs.getString("colorPreferido"));
+
 		return o;
 	}
 	

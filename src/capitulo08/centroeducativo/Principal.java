@@ -12,6 +12,7 @@ import capitulo08.centroeducativo.view.PanelCurso;
 import capitulo08.centroeducativo.view.PanelEstudiante;
 import capitulo08.centroeducativo.view.PanelMateria;
 import capitulo08.centroeducativo.view.PanelProfesor;
+import capitulo08.centroeducativo.view.PanelSlotEvaluacionEstudiante;
 import capitulo08.centroeducativo.view.PanelValoracion;
 
 public class Principal extends JFrame {
@@ -28,7 +29,7 @@ public class Principal extends JFrame {
 	public Principal() {
 		super("Gestión de centro educativo");
 		
-		this.setBounds(0, 0, 800, 600);
+		this.setBounds(0, 0, 500, 400);
 		
 		
 		PanelCurso panelCurso = new PanelCurso();

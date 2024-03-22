@@ -11,13 +11,15 @@ public class Persona {
 	private String email;
 	private String telefono;
 	private int tipoSexo;
+	private byte[] image;
+	private String color;
 	
 	public Persona() {
 		super();
 	}
 	
 	public Persona(int id, String nombre, String pApellido, String sApellido, String dni, String direccion, String email,
-			String telefono, int tipoSexo) {
+			String telefono, int tipoSexo, byte[] image, String color) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -28,6 +30,8 @@ public class Persona {
 		this.email = email;
 		this.telefono = telefono;
 		this.tipoSexo = tipoSexo;
+		this.image = image;
+		this.color = color;
 	}
 	public int getId() {
 		return id;
@@ -86,6 +90,23 @@ public class Persona {
 
 	public void setTipoSexo(int tipoSexo) {
 		this.tipoSexo = tipoSexo;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	@Override
